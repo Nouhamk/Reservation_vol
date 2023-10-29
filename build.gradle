@@ -2,7 +2,11 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
-mainClassName='td4.GestionVol.Start'
+
+sourceSets.main.java.srcDirs = ['src']
+sourceSets.test.java.srcDirs = ['src']
+
+mainClassName='td4.Start'
 
 repositories {
     mavenCentral()
@@ -19,13 +23,14 @@ test {
     useJUnitPlatform()
 }
 
+run {
+    standardInput = System.in
+}
+
 jar {
  manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
                    'Implementation-Version': '1.0.0',
-                   'Main-Class': 'td4.GestionVol.Start'
+                   'Main-Class': 'td4.Start'
     }
 }
-
-sourceSets.main.java.srcDirs = ['src']
-sourceSets.test.java.srcDirs = ['src']
