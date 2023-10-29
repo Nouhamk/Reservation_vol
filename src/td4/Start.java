@@ -172,17 +172,17 @@ public class Start {
 
         // Affichage de menu
         System.out.println("|---------------------------------------------------------------------|");
-        System.out.println("|                            TP4_Genie_Log                            |");
-        System.out.println("|                    Zarouki Hamza - Moukaddime Nouhaila                   |");
+        System.out.println("|                          Réservation Vol                            |");
+        System.out.println("|                          Moukaddime Nouhaila                        |");
         System.out.println("|---------------------------------------------------------------------|");
         System.out.println("");
         System.out.println("_______________________ Menu _______________________");
         System.out.println(" 1) Liste des Vols ");
         System.out.println(" 2) Liste des Reservations ");
-        Scanner sc= new Scanner(System.in);
         System.out.print("Saisissez votre choix :  ");
-        int choice= sc.nextInt();
-
+        Scanner sc = new Scanner(System.in);
+        //int choice = sc.nextInt();
+        int choice = Integer.parseInt(sc.nextLine());
         switch (choice){
             case 1 :
                 // Affichage du tableau de Compagnies & Vols
@@ -201,7 +201,6 @@ public class Start {
                 System.out.println("Erreur de saisie");
                 break;
         }
-
 
         // END
     }
