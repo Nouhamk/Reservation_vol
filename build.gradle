@@ -2,6 +2,9 @@
 apply plugin: 'java'
 apply plugin: 'application'
 
+plugins {
+    id 'maven-publish'
+}
 
 sourceSets.main.java.srcDirs = ['src']
 sourceSets.test.java.srcDirs = ['src']
@@ -17,6 +20,7 @@ dependencies {
     implementation platform('org.junit:junit-bom:5.7.0')
     implementation 'org.junit.jupiter:junit-jupiter'
     implementation 'org.junit.jupiter:junit-jupiter'
+    implementation group: 'com.github.Nouhamk', name: 'Reservation_vol', version: '1.0.0'
 }
 
 test {
@@ -26,6 +30,29 @@ test {
 run {
     standardInput = System.in
 }
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            groupId = 'com.github.Nouhamk'
+            artifactId = 'Reservation_vol'
+            version = '1.0.0'
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Nouhamk/Reservation_vol")
+            credentials {
+                username = project.findProperty("gpr.user")
+                password = project.findProperty("gpr.token")
+            }
+        }
+    }
+}
+
 
 jar {
  manifest {
